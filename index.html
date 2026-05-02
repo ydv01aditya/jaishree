@@ -1,6 +1,20 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <script>
+  const password = "iloveuaditya"; // 👈 change this to whatever you want
+  const entered = sessionStorage.getItem("auth");
+
+  if (entered !== password) {
+    const input = prompt("🔒 Enter password to continue:");
+    if (input === password) {
+      sessionStorage.setItem("auth", password);
+    } else {
+      document.write("<h2 style='font-family:sans-serif;text-align:center;margin-top:20%'>❌ Access Denied</h2>");
+      throw new Error("Wrong password");
+    }
+  }
+</script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>For Jaishree</title>
