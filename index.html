@@ -1,56 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-
-  <!-- Password Protection - MUST BE FIRST -->
-  <script>
-    const password = "iloveuaditya"; // 👈 change this
-
-    const entered = sessionStorage.getItem("auth");
-
-    if (entered !== password) {
-      // Hide the whole page immediately
-      document.addEventListener("DOMContentLoaded", function() {
-        document.body.style.display = "none";
-      });
-
-      const input = prompt("🔒 Enter password to continue:");
-
-      if (input === password) {
-        sessionStorage.setItem("auth", password);
-        // correct password - show the page
-        document.addEventListener("DOMContentLoaded", function() {
-          document.body.style.display = "block";
-        });
-      } else {
-        // Wrong password - keep everything hidden, show denied screen
-        document.addEventListener("DOMContentLoaded", function() {
-          document.body.style.display = "none";
-          document.body.innerHTML = `
-            <div style="
-              display:flex;
-              justify-content:center;
-              align-items:center;
-              height:100vh;
-              background:#000;
-              color:#fff;
-              font-family:sans-serif;
-              font-size:24px;
-            ">❌ Access Denied. Close this tab.</div>
-          `;
-          document.body.style.display = "flex";
-        });
-        throw new Error("Access Denied");
-      }
-    }
-  </script>
-
-  <!-- Add this STYLE right after to hide body before JS runs -->
-  <style>
-    body { visibility: hidden; }
-  </style>
-
-  <!-- your other head stuff below (title, css links etc.) -->
+<!doctype html>
+<html lang="en">
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>For Jaishree</title>
@@ -345,14 +295,7 @@
       </div>
       <p id="lightboxCaption"></p>
     </div>
-<!-- Show body only if auth passed -->
-  <script>
-    const auth = sessionStorage.getItem("auth");
-    const pass = "yourpassword"; // 👈 same password as above
-    if (auth === pass) {
-      document.body.style.visibility = "visible";
-    }
-  </script>
 
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
