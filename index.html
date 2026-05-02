@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <script>
-  const password = "iloveuaditya"; // 👈 change this to whatever you want
+  const password = "yourpassword"; // 👈 change this
+
   const entered = sessionStorage.getItem("auth");
 
   if (entered !== password) {
@@ -10,8 +11,23 @@
     if (input === password) {
       sessionStorage.setItem("auth", password);
     } else {
-      document.write("<h2 style='font-family:sans-serif;text-align:center;margin-top:20%'>❌ Access Denied</h2>");
-      throw new Error("Wrong password");
+      // This fully blocks the page
+      document.documentElement.innerHTML = `
+        <div style="
+          display:flex;
+          justify-content:center;
+          align-items:center;
+          height:100vh;
+          background:#000;
+          color:#fff;
+          font-family:sans-serif;
+          font-size:24px;
+        ">
+          ❌ Access Denied
+        </div>
+      `;
+      // Stop all scripts from running
+      throw new Error("Access Denied");
     }
   }
 </script>
